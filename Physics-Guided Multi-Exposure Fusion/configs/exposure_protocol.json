@@ -1,0 +1,68 @@
+{
+  "exposure_definition": {
+    "reference_ev": 0.0,
+    "ratio_formula": "2**EV",
+    "raw_formula": "RAW10 / 1023",
+    "normalization_formula": "raw / (2**EV) / hdr_scale",
+    "input_order": "ascending EV",
+    "exposures_per_sample": 3
+  },
+  "exposure_pool": [
+    {"ev": -2.0, "ratio": 0.25, "filename": "ldr_ev_m2_noise_medium_raw10.npy"},
+    {"ev": -1.5, "ratio": 0.3535533905932738, "filename": "ldr_ev_m1p5_noise_medium_raw10.npy"},
+    {"ev": -1.0, "ratio": 0.5, "filename": "ldr_ev_m1_noise_medium_raw10.npy"},
+    {"ev": 0.0, "ratio": 1.0, "filename": "ldr_ev_0_noise_medium_raw10.npy"},
+    {"ev": 1.0, "ratio": 2.0, "filename": "ldr_ev_p1_noise_medium_raw10.npy"},
+    {"ev": 1.5, "ratio": 2.8284271247461903, "filename": "ldr_ev_p1p5_noise_medium_raw10.npy"},
+    {"ev": 2.0, "ratio": 4.0, "filename": "ldr_ev_p2_noise_medium_raw10.npy"}
+  ],
+  "training_combinations": [
+    [-2.0, -1.5, 1.0],
+    [-2.0, -1.5, 1.5],
+    [-2.0, -1.5, 2.0],
+    [-2.0, -1.0, 1.0],
+    [-2.0, -1.0, 1.5],
+    [-2.0, -1.0, 2.0],
+    [-1.5, -1.0, 1.0],
+    [-1.5, -1.0, 1.5],
+    [-1.5, -1.0, 2.0],
+    [-2.0, 1.0, 1.5],
+    [-2.0, 1.0, 2.0],
+    [-2.0, 1.5, 2.0],
+    [-1.5, 1.0, 1.5],
+    [-1.5, 1.0, 2.0],
+    [-1.5, 1.5, 2.0],
+    [-1.0, 1.0, 1.5],
+    [-1.0, 1.0, 2.0],
+    [-1.0, 1.5, 2.0],
+    [-2.0, 0.0, 1.5],
+    [-2.0, 0.0, 2.0],
+    [-1.5, 0.0, 1.0],
+    [-1.5, 0.0, 1.5],
+    [-1.0, 0.0, 1.0],
+    [-1.0, 0.0, 1.5]
+  ],
+  "training_sampling": {
+    "samples_per_scene_per_epoch": 1,
+    "canonical_combination": [-2.0, 0.0, 2.0],
+    "canonical_fraction": 0.4,
+    "canonical_assignments_per_epoch": 64,
+    "other_assignments_per_epoch": 96,
+    "base_assignments_per_other_combination": 4,
+    "rotating_extra_assignments_per_epoch": 4,
+    "schedule_is_precomputed": true
+  },
+  "validation_combinations": [
+    [-2.0, 0.0, 2.0],
+    [-1.0, 0.0, 1.0],
+    [-1.5, 0.0, 1.5],
+    [-2.0, -1.0, 1.5],
+    [-1.5, 1.0, 2.0]
+  ],
+  "heldout_test_combinations": [
+    [-2.0, 0.0, 1.0],
+    [-1.0, 0.0, 2.0],
+    [-1.5, 0.0, 2.0]
+  ],
+  "main_test_combination": [-2.0, 0.0, 2.0]
+}

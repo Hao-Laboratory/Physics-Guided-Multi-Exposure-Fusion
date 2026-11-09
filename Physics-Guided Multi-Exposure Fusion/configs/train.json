@@ -1,0 +1,63 @@
+{
+  "project": "Physics-Guided Multi-Exposure Fusion",
+  "data": {
+    "root": "data/ICVL_dataset",
+    "gt_filename": "yhdr_9ch_gt.npy",
+    "max_dn": 1023.0,
+    "hdr_scale": 2.5712735652923584,
+    "splits": {
+      "train": {
+        "directory": "train",
+        "expected_scene_count": 160,
+        "scene_name_sha256": "fb78a9bf93da9f1e2f9a4a907e26e80e73b2478c6c14479c20fe13a64a69387f"
+      },
+      "val": {
+        "directory": "val",
+        "expected_scene_count": 22,
+        "scene_name_sha256": "019e6dd946e73854305ed692b8e16dd2cf9a7757396540d5fe52cf48c71d59af"
+      },
+      "test": {
+        "directory": "test",
+        "expected_scene_count": 20,
+        "scene_name_sha256": "4267e83e984edaacd3420096e623d8c65c795c8b7f945b1f7e7256d0559d9a18"
+      }
+    }
+  },
+  "exposure_protocol": "configs/exposure_protocol.json",
+  "training_schedule": "configs/exposure_schedule.npz",
+  "output_root": "outputs/training",
+  "model": {
+    "num_measurements": 9,
+    "reliability_channels": 16,
+    "unet_channels": [32, 64, 96],
+    "unet_blocks": [2, 2, 4],
+    "residual_scale": 0.1,
+    "reliability_floor": 0.01,
+    "reliability_eps": 1e-6,
+    "output_init_scale": 0.1
+  },
+  "loss": {
+    "mu": 5000.0,
+    "sam_weight": 0.05
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "initial_lr": 0.0002,
+    "betas": [0.9, 0.999],
+    "eps": 1e-8,
+    "weight_decay": 0.0,
+    "lr_decay_interval": 100,
+    "lr_decay_factor": 0.5,
+    "gradient_clip_norm": 1.0
+  },
+  "training": {
+    "epochs": 500,
+    "batch_size": 2,
+    "val_batch_size": 1,
+    "patch_size": 128,
+    "num_workers": 0,
+    "validation_interval": 5,
+    "amp": true,
+    "seed": 443
+  }
+}

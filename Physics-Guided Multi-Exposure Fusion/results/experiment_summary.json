@@ -1,0 +1,15 @@
+{
+  "project": "Physics-Guided Multi-Exposure Fusion",
+  "checkpoint": "pretrained/model_best.pth",
+  "selection_epoch": 500,
+  "trainable_parameters": 1290786,
+  "hdr_scale": 2.5712735652923584,
+  "validation_aggregation": "equal mean over five exposure combinations",
+  "validation_metrics": {
+    "total_loss": 0.0005976295281222767,
+    "l1_mu": 0.0004666157098571685,
+    "measurement_angle_rad": 0.0026202762859280815,
+    "weighted_measurement_angle": 0.0001310138159500308,
+    "rmse_normalized": 0.0006351979753658684
+  }
+}
